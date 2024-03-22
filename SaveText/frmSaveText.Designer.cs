@@ -33,6 +33,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.ofd = new System.Windows.Forms.OpenFileDialog();
+            this.btnSavePdf = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtTitle
@@ -75,11 +76,22 @@
             this.ofd.FileName = "openFileDialog1";
             this.ofd.FileOk += new System.ComponentModel.CancelEventHandler(this.ofd_FileOk);
             // 
+            // btnSavePdf
+            // 
+            this.btnSavePdf.Location = new System.Drawing.Point(297, 428);
+            this.btnSavePdf.Name = "btnSavePdf";
+            this.btnSavePdf.Size = new System.Drawing.Size(75, 23);
+            this.btnSavePdf.TabIndex = 4;
+            this.btnSavePdf.Text = "Bewaar PDF";
+            this.btnSavePdf.UseVisualStyleBackColor = true;
+            this.btnSavePdf.Click += new System.EventHandler(this.BtnSavePdf_Click);
+            // 
             // frmSaveText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 463);
+            this.Controls.Add(this.btnSavePdf);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtStory);
@@ -98,6 +110,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnOpen;
         private System.Windows.Forms.OpenFileDialog ofd;
+        private System.Windows.Forms.Button btnSavePdf;
     }
 }
 

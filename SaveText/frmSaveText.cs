@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PdfSharp.Pdf;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,6 +69,17 @@ namespace SaveText
             // naam van bestand ZONDER EXTENSIE
             // in textbox bovenaan plaatsen
             txtTitle.Text = Path.GetFileNameWithoutExtension(path);
+        }
+
+        private void BtnSavePdf_Click(object sender, EventArgs e)
+        {
+            // PDF document aanmaken
+            PdfDocument document = new PdfDocument();
+
+            // lege pagina toevoegen aan document
+            PdfPage page = document.AddPage();
+
+
         }
     }
 }
