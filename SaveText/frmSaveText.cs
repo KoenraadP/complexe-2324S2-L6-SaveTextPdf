@@ -1,8 +1,11 @@
-﻿using PdfSharp.Pdf;
+﻿using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -79,7 +82,31 @@ namespace SaveText
             // lege pagina toevoegen aan document
             PdfPage page = document.AddPage();
 
+            // XGraphics object maken om de tekst te kunnen
+            // 'tekenen' op de pagina
+            XGraphics gfx = XGraphics.FromPdfPage(page);
 
+            // lettertype instellen
+            // deze constructor gebruikt lettertype en lettergrootte
+            XFont font = new XFont("Verdana", 12);
+
+            // tekst op pagina tekenen
+            // xrect --> rechthoek waarin tekst geplaatst wordt
+            // eerste twee parameters bij xrect --> marge links en boven
+            // laatste twee parameters bij xrect --> marge rechts en onder
+            XTextFormatter tf = new XTextFormatter(gfx);
+            tf.DrawString(txtStory.Text,font,XBrushes.Black,
+                new XRect(100,100,page.Width-200,page.Height-200));
+
+            // waar en hoe op te slaan
+            string path = @"C:\verhalen\" + txtTitle.Text + ".pdf";
+
+            // opslaan
+            document.Save(path);
+
+            // testen of PDF kan geopend worden
+            // met standaard PDF programma van PC
+            Process.Start(path);
         }
     }
 }
